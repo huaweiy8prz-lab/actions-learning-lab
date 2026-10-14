@@ -21,7 +21,7 @@ jobs:
           echo "Workflow completed successfully." >> output/result.txt
 
       - name: Upload output file
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: learning-output
           path: output/result.txt
