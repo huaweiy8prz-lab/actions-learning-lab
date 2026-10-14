@@ -1,0 +1,28 @@
+name: Python Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Run application
+        run: python app.py
+
+      - name: Test addition
+        run: python -c "from app import add; assert add(10, 20) == 30; print('Test passed!')"
