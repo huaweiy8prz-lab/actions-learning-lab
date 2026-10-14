@@ -1,0 +1,26 @@
+name: Temporary Linux Lab
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Inspect temporary environment
+        run: |
+          echo "Temporary GitHub Actions environment"
+          echo "Operating system:"
+          uname -a
+          echo "Python version:"
+          python3 --version
+          echo "Current directory:"
+          pwd
+          echo "Disk space:"
+          df -h .
+          echo "Environment check completed."
