@@ -1,0 +1,32 @@
+name: Actions Learning Lab
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository files
+        uses: actions/checkout@v4
+
+      - name: Show system information
+        run: |
+          echo "GitHub Actions is working!"
+          echo "Operating system:"
+          uname -s
+          echo "Current date (UTC):"
+          date -u
+          echo "Repository:"
+          echo "$GITHUB_REPOSITORY"
+
+      - name: Check README
+        run: |
+          test -f README.md
+          echo "README.md exists."
